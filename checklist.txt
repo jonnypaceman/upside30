@@ -42,7 +42,15 @@
         - Complete step 3: Set up IAM permissions with service accounts and custom roles
         - Update checklist: Complete steps 1-2 (GCP project creation and API enablement)
       * Local workspace: /Users/jonathangregory/Desktop/upside30/upside30
-- [ ] 5. Set up .gitignore file
+- [x] 5. Set up .gitignore file
+      * Created comprehensive .gitignore for full-stack JS/TS project
+      * Includes patterns for:
+        - Node.js/Express backend files (node_modules, logs, env files)
+        - React/TypeScript frontend files (build artifacts, env files)
+        - IDE and editor files (.vscode, .idea)
+        - Google Cloud and Firebase configuration files
+        - Database files, logs, and temporary files
+        - System-specific files (.DS_Store, Thumbs.db)
 
 ### Application Bootstrap
 - [ ] 6. Create React App with TypeScript
