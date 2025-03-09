@@ -219,7 +219,31 @@
         - CREATE TABLE statements with proper constraints
         - CREATE INDEX statements for performance
         - CREATE TRIGGER statements for timestamp management
-- [ ] 12. Create SQL script for period and data tracking tables
+- [x] 12. Create SQL script for period and data tracking tables
+      * Created script: mine-to-mill/server/src/scripts/03_period_and_data_tables.sql
+      * Tables created:
+        - PeriodTbl: Time periods with PeriodID (PK), Year, Month, PeriodDesc, IsActive, IsClosed
+        - MonthlyUploadTbl: Monthly data uploads with UploadID (PK), OperationID (FK), PeriodID (FK), UploadDate, UploadedBy, Status, Comments
+        - SatelliteStockTbl: Satellite stockpile data with SatelliteStockID (PK), UploadID (FK), OreSourceID (FK), OreTypeID (FK), MineTypeID (FK), StockpileID (FK), Tonnes, Grade, Ounces
+        - ROMStockTbl: ROM stockpile data with similar structure to SatelliteStockTbl
+        - CTGStockTbl: CTG stockpile data with similar structure to SatelliteStockTbl
+        - COSStockTbl: COS stockpile data with similar structure to SatelliteStockTbl
+        - SCTStockTbl: SCT stockpile data with similar structure to SatelliteStockTbl
+        - ReconciliationFactorTbl: Reconciliation factors with ReconciliationFactorID (PK), OperationID (FK), PeriodID (FK), FactorType, Value
+      * Added features:
+        - Foreign key constraints to enforce data integrity
+        - Unique constraints on key fields
+        - Check constraints to ensure valid data (e.g., Month between 1 and 12, Status in predefined list)
+        - Advanced check constraints to ensure stockpile data is linked to the correct stockpile type
+        - Indexes for performance optimization
+        - Timestamps for tracking creation and updates
+        - Triggers to automatically update timestamps
+        - Table and column comments for documentation
+      * Script includes:
+        - DROP TABLE statements to ensure clean installation
+        - CREATE TABLE statements with proper constraints
+        - CREATE INDEX statements for performance
+        - CREATE TRIGGER statements for timestamp management
 - [ ] 13. Deploy schema to Cloud SQL instance
 - [ ] 14. Create seed data for testing
 
