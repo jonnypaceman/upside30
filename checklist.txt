@@ -257,7 +257,19 @@
         - Period and data tracking: PeriodTbl, MonthlyUploadTbl, SatelliteStockTbl, ROMStockTbl, CTGStockTbl, COSStockTbl, SCTStockTbl, ReconciliationFactorTbl
       * All tables include proper constraints, indexes, and triggers
       * Database password set to "Maree123$" for development
-- [ ] 14. Create seed data for testing
+- [x] 14. Create seed data for testing
+      * Created seed data scripts:
+        - seed_01_organization.sql: Company (Northern Star), Regions (Kalgoorlie, Yandal, Pogo), Operations (KCGM, KalOps, Carosue Dam, Thunderbox, Jundee, PogoOps)
+        - seed_02_reference_tables.sql: Ore sources, ore types, mine types, mines, mine zones, stockpiles for KCGM operation
+        - seed_03_period_data.sql: Period (January 2025), monthly upload, and sample stock data for all stockpile types
+      * Created deployment script (deploy_seed_data.sh) to automate the seed data insertion process
+      * Seed data based on real-world mining operation data from data_tables.csv
+      * Data includes:
+        - Organization structure: 1 company, 3 regions, 6 operations
+        - Reference data: 3 ore sources, 4 ore types, 3 mine types, 3 mines, 12 mine zones, 70+ stockpiles
+        - Monthly data: January 2025 period with sample stock data for all stockpile types
+        - Reconciliation factors: Mine Claim Factor (0.95) and Metal Call Factor (0.98)
+      * Deployment uses Cloud SQL Proxy for secure connection to the database
 
 ## Backend Development
 
