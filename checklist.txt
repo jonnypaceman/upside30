@@ -4,22 +4,37 @@
 
 ### Project Initialization
 - [x] 1. Create new GCP project
+      * Project ID: mine-to-mill-recon-jg-2024
+      * Project Name: Mine to Mill Recon
+      * Created on: March 9, 2025
+      * Project Number: 296919560075
+      * Set as active project using: gcloud config set project mine-to-mill-recon-jg-2024
 - [x] 2. Enable necessary APIs (Cloud SQL, Cloud Run, Firebase)
-- [x] 3. Set up IAM permissions
-- [x] 4. Initialize Git repository
-- [x] 5. Set up .gitignore file
+      * Cloud Run API (run.googleapis.com)
+      * Firebase Management API (firebase.googleapis.com)
+      * Cloud Firestore API (firestore.googleapis.com)
+      * Cloud Storage API (storage.googleapis.com)
+      * Identity and Access Management API (iam.googleapis.com)
+      * Secret Manager API (secretmanager.googleapis.com)
+      * Cloud Monitoring API (monitoring.googleapis.com)
+      * Cloud Logging API (logging.googleapis.com)
+      * Cloud SQL Admin API (sqladmin.googleapis.com)
+      * Cloud SQL (sql-component.googleapis.com)
+- [ ] 3. Set up IAM permissions
+- [ ] 4. Initialize Git repository
+- [ ] 5. Set up .gitignore file
 
 ### Application Bootstrap
-- [x] 6. Create React App with TypeScript
-- [x] 7. Set up Express.js backend
-- [x] 8. Install necessary dependencies
+- [ ] 6. Create React App with TypeScript
+- [ ] 7. Set up Express.js backend
+- [ ] 8. Install necessary dependencies
 
 ### Database Setup
-- [x] 9. Provision PostgreSQL on Cloud SQL
-- [x] 10. Create dimension tables based on simplified schema (Company, Region, Operation)
-- [x] 11. Create reference tables (OreSource, OreType, MineType, Mine, MineZone, Stockpile)
-- [x] 12. Create Period and MonthlyUpload tables for tracking data submissions
-- [~] 12a. Deploy database schema migrations to Cloud SQL (Ready to deploy using Cloud Shell)
+- [ ] 9. Provision PostgreSQL on Cloud SQL
+- [ ] 10. Create dimension tables based on simplified schema (Company, Region, Operation)
+- [ ] 11. Create reference tables (OreSource, OreType, MineType, Mine, MineZone, Stockpile)
+- [ ] 12. Create Period and MonthlyUpload tables for tracking data submissions
+- [ ] 12a. Deploy database schema migrations to Cloud SQL (Ready to deploy using Cloud Shell)
       * SQL script created: mine-to-mill/server/src/scripts/schema.sql
       * Deployment script created: mine-to-mill/server/src/scripts/deploy-to-cloud-sql.sh
       * To complete: Run the deployment script in Google Cloud Shell
@@ -27,8 +42,8 @@
 ## Backend Development
 
 ### Core API Structure
-- [x] 13. Set up Express server configuration
-- [x] 14. Configure middleware
+- [ ] 13. Set up Express server configuration
+- [ ] 14. Configure middleware
 - [ ] 15. Implement Firebase Authentication
 - [ ] 16. Create basic role-based access control
 
