@@ -153,7 +153,32 @@
       * Node.js engine requirement: >=16.0.0
 
 ### Database Setup
-- [ ] 9. Provision PostgreSQL on Cloud SQL
+- [x] 9. Provision PostgreSQL on Cloud SQL
+      * Instance name: m2m-postgres-dev
+      * Region: australia-southeast1 (Sydney, Australia)
+      * Database version: PostgreSQL 14
+      * Machine type: db-f1-micro (shared-core, 1 vCPU, 0.6 GB memory)
+      * Creation command: 
+        ```
+        gcloud sql instances create m2m-postgres-dev --database-version=POSTGRES_14 --tier=db-f1-micro --region=australia-southeast1 --project=mine-to-mill-recon-jg-2024
+        ```
+      * Connection name: mine-to-mill-recon-jg-2024:australia-southeast1:m2m-postgres-dev
+      * Public IP address: 34.87.253.212
+      * Database created: mine_to_mill
+        ```
+        gcloud sql databases create mine_to_mill --instance=m2m-postgres-dev --project=mine-to-mill-recon-jg-2024
+        ```
+      * Database user: postgres (default)
+      * Password set: M2mComplex!Password123
+        ```
+        gcloud sql users set-password postgres --instance=m2m-postgres-dev --password=M2mComplex!Password123 --project=mine-to-mill-recon-jg-2024
+        ```
+      * Network access: Allowed from any IP (0.0.0.0/0) for development
+        ```
+        gcloud sql instances patch m2m-postgres-dev --authorized-networks=0.0.0.0/0 --project=mine-to-mill-recon-jg-2024
+        ```
+      * Connection string: postgresql://postgres:M2mComplex!Password123@34.87.253.212:5432/mine_to_mill
+      * Environment variables updated in .env file
 - [ ] 10. Create dimension tables based on simplified schema (Company, Region, Operation)
 - [ ] 11. Create reference tables (OreSource, OreType, MineType, Mine, MineZone, Stockpile)
 - [ ] 12. Create Period and MonthlyUpload tables for tracking data submissions
