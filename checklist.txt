@@ -8,32 +8,46 @@
       * Project Name: Mine to Mill Recon
       * Created on: March 9, 2025
       * Project Number: 296919560075
-      * Set as active project using: gcloud config set project mine-to-mill-recon-jg-2024
+      * Creation command: `gcloud projects create mine-to-mill-recon-jg-2024 --name="Mine to Mill Recon"`
+      * Set as active project using: `gcloud config set project mine-to-mill-recon-jg-2024`
+      * Billing account linked via Google Cloud Console
 - [x] 2. Enable necessary APIs (Cloud SQL, Cloud Run, Firebase)
-      * Cloud Run API (run.googleapis.com)
-      * Firebase Management API (firebase.googleapis.com)
-      * Cloud Firestore API (firestore.googleapis.com)
-      * Cloud Storage API (storage.googleapis.com)
-      * Identity and Access Management API (iam.googleapis.com)
-      * Secret Manager API (secretmanager.googleapis.com)
-      * Cloud Monitoring API (monitoring.googleapis.com)
-      * Cloud Logging API (logging.googleapis.com)
-      * Cloud SQL Admin API (sqladmin.googleapis.com)
-      * Cloud SQL (sql-component.googleapis.com)
+      * Cloud Run API: `gcloud services enable run.googleapis.com`
+      * Firebase Management API: `gcloud services enable firebase.googleapis.com`
+      * Cloud Firestore API: `gcloud services enable firestore.googleapis.com`
+      * Cloud Storage API: `gcloud services enable storage.googleapis.com`
+      * Identity and Access Management API: `gcloud services enable iam.googleapis.com`
+      * Secret Manager API: `gcloud services enable secretmanager.googleapis.com`
+      * Cloud Monitoring API: `gcloud services enable monitoring.googleapis.com`
+      * Cloud Logging API: `gcloud services enable logging.googleapis.com`
+      * Cloud SQL Admin API: `gcloud services enable sqladmin.googleapis.com`
+      * Cloud SQL: `gcloud services enable sql-component.googleapis.com`
+      * Verification command: `gcloud services list --enabled --project=mine-to-mill-recon-jg-2024`
 - [x] 3. Set up IAM permissions
       * Created service accounts:
-        - m2m-backend-sa: For backend API operations
-        - m2m-db-sa: For database operations
-        - m2m-storage-sa: For storage operations
+        - m2m-backend-sa: `gcloud iam service-accounts create m2m-backend-sa --display-name="Mine to Mill Backend Service Account" --description="Service account for the Mine to Mill Reconciliation backend API"`
+        - m2m-db-sa: `gcloud iam service-accounts create m2m-db-sa --display-name="Mine to Mill Database Service Account" --description="Service account for database operations in the Mine to Mill Reconciliation system"`
+        - m2m-storage-sa: `gcloud iam service-accounts create m2m-storage-sa --display-name="Mine to Mill Storage Service Account" --description="Service account for storage operations in the Mine to Mill Reconciliation system"`
       * Assigned roles:
-        - m2m-backend-sa: roles/run.invoker, roles/secretmanager.secretAccessor, custom role m2m_app_role
-        - m2m-db-sa: roles/cloudsql.client
-        - m2m-storage-sa: roles/storage.objectAdmin
+        - m2m-backend-sa: 
+          * `gcloud projects add-iam-policy-binding mine-to-mill-recon-jg-2024 --member="serviceAccount:m2m-backend-sa@mine-to-mill-recon-jg-2024.iam.gserviceaccount.com" --role="roles/run.invoker"`
+          * `gcloud projects add-iam-policy-binding mine-to-mill-recon-jg-2024 --member="serviceAccount:m2m-backend-sa@mine-to-mill-recon-jg-2024.iam.gserviceaccount.com" --role="roles/secretmanager.secretAccessor"`
+          * `gcloud projects add-iam-policy-binding mine-to-mill-recon-jg-2024 --member="serviceAccount:m2m-backend-sa@mine-to-mill-recon-jg-2024.iam.gserviceaccount.com" --role="projects/mine-to-mill-recon-jg-2024/roles/m2m_app_role"`
+        - m2m-db-sa: `gcloud projects add-iam-policy-binding mine-to-mill-recon-jg-2024 --member="serviceAccount:m2m-db-sa@mine-to-mill-recon-jg-2024.iam.gserviceaccount.com" --role="roles/cloudsql.client"`
+        - m2m-storage-sa: `gcloud projects add-iam-policy-binding mine-to-mill-recon-jg-2024 --member="serviceAccount:m2m-storage-sa@mine-to-mill-recon-jg-2024.iam.gserviceaccount.com" --role="roles/storage.objectAdmin"`
       * Created custom role (m2m_app_role) with permissions for:
-        - Cloud SQL connections
-        - Cloud Run services
-        - Secret Manager access
-        - Storage object operations
+        - Custom role definition file: m2m-app-role.yaml
+        - Creation command: `gcloud iam roles create m2m_app_role --project=mine-to-mill-recon-jg-2024 --file=m2m-app-role.yaml`
+        - Permissions included:
+          * cloudsql.instances.connect
+          * cloudsql.instances.get
+          * run.services.get
+          * secretmanager.secrets.get
+          * storage.objects.create
+          * storage.objects.delete
+          * storage.objects.get
+          * storage.objects.list
+          * storage.objects.update
 - [x] 4. Initialize Git repository
       * Repository URL: https://github.com/jonnypaceman/upside30
       * Main branch: main
@@ -42,32 +56,42 @@
         - Complete step 3: Set up IAM permissions with service accounts and custom roles
         - Update checklist: Complete steps 1-2 (GCP project creation and API enablement)
       * Local workspace: /Users/jonathangregory/Desktop/upside30/upside30
+      * Remote origin: `git remote -v` shows https://github.com/jonnypaceman/upside30
 - [x] 5. Set up .gitignore file
       * Created comprehensive .gitignore for full-stack JS/TS project
-      * Includes patterns for:
-        - Node.js/Express backend files (node_modules, logs, env files)
-        - React/TypeScript frontend files (build artifacts, env files)
-        - IDE and editor files (.vscode, .idea)
-        - Google Cloud and Firebase configuration files
-        - Database files, logs, and temporary files
-        - System-specific files (.DS_Store, Thumbs.db)
+      * File location: /Users/jonathangregory/Desktop/upside30/upside30/.gitignore
+      * Key patterns included:
+        - Node.js/Express: node_modules/, npm-debug.log, .env, dist/, build/
+        - React/TypeScript: /client/node_modules/, /client/build/, /client/.env
+        - IDE and editor: .idea/, .vscode/, *.swp, .DS_Store
+        - Google Cloud: .firebase/, firebase-debug.log, service-account-*.json
+        - Database: *.sqlite, *.db
+        - Temporary: tmp/, .cache/
+        - System: .DS_Store, Thumbs.db
+      * Commit message: "Add comprehensive .gitignore file for full-stack JS/TS project"
 
 ### Application Bootstrap
 - [x] 6. Create React App with TypeScript
-      * Created using create-react-app with TypeScript template
-      * Installed key dependencies:
-        - Material UI for component library
-        - React Router for navigation
-        - Axios for API requests
-        - Firebase for authentication
-        - Chart.js for data visualization
-        - Formik and Yup for form handling and validation
-      * Set up project structure:
-        - Created theme.ts with custom Material UI theme
-        - Defined TypeScript interfaces in types/index.ts
-        - Implemented basic layout component with sidebar and header
-        - Created basic pages: Dashboard, Login, and NotFound
-      * Successfully built the application with npm run build
+      * Creation command: `npx create-react-app mine-to-mill/client --template typescript`
+      * Project location: /Users/jonathangregory/Desktop/upside30/upside30/mine-to-mill/client
+      * Installed dependencies command: 
+        ```
+        npm install @mui/material @mui/icons-material @emotion/react @emotion/styled react-router-dom @types/react-router-dom axios firebase chart.js react-chartjs-2 formik yup
+        ```
+      * Package versions (from package.json):
+        - React: ^18.2.0
+        - TypeScript: ^4.9.5
+        - Material UI: ^5.x
+        - React Router: ^6.x
+      * Project structure created:
+        - src/components/layout/MainLayout.tsx: Main layout with responsive drawer (width: 240px)
+        - src/pages/dashboard/Dashboard.tsx: Dashboard with reconciliation factors and stockpile data
+        - src/pages/auth/Login.tsx: Login form with email/password authentication
+        - src/pages/errors/NotFound.tsx: 404 page with navigation back to dashboard
+        - src/types/index.ts: TypeScript interfaces for all data models
+        - src/theme.ts: Custom Material UI theme with primary (#1976d2) and secondary (#f57c00) colors
+      * Build command: `npm run build` (successful with optimized production build)
+      * Build output: 144.08 kB main.js, 1.77 kB chunk.js, 263 B main.css (after gzip)
 - [ ] 7. Set up Express.js backend
 - [ ] 8. Install necessary dependencies
 
