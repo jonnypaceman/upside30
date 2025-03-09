@@ -1,0 +1,105 @@
+# Mine to Mill Reconciliation Web App - Development Checklist
+
+## Project Setup
+
+### Project Initialization
+- [x] 1. Create new GCP project
+- [x] 2. Enable necessary APIs (Cloud SQL, Cloud Run, Firebase)
+- [x] 3. Set up IAM permissions
+- [x] 4. Initialize Git repository
+- [x] 5. Set up .gitignore file
+
+### Application Bootstrap
+- [x] 6. Create React App with TypeScript
+- [x] 7. Set up Express.js backend
+- [x] 8. Install necessary dependencies
+
+### Database Setup
+- [x] 9. Provision PostgreSQL on Cloud SQL
+- [x] 10. Create dimension tables based on simplified schema (Company, Region, Operation)
+- [x] 11. Create reference tables (OreSource, OreType, MineType, Mine, MineZone, Stockpile)
+- [x] 12. Create Period and MonthlyUpload tables for tracking data submissions
+- [~] 12a. Deploy database schema migrations to Cloud SQL (Ready to deploy using Cloud Shell)
+      * SQL script created: mine-to-mill/server/src/scripts/schema.sql
+      * Deployment script created: mine-to-mill/server/src/scripts/deploy-to-cloud-sql.sh
+      * To complete: Run the deployment script in Google Cloud Shell
+
+## Backend Development
+
+### Core API Structure
+- [x] 13. Set up Express server configuration
+- [x] 14. Configure middleware
+- [ ] 15. Implement Firebase Authentication
+- [ ] 16. Create basic role-based access control
+
+### Data Management API
+- [ ] 17. Create CRUD endpoints for dimension and reference tables
+- [ ] 18. Implement monthly data upload API with validation
+- [ ] 19. Create endpoints for each data section (Satellite, ROM, CTG, etc.)
+- [ ] 20. Develop data retrieval API for reporting
+- [ ] 21. Deploy backend to Cloud Run
+
+## Frontend Development
+
+### Frontend Setup
+- [ ] 22. Organize folder structure
+- [ ] 23. Configure routing with React Router
+- [ ] 24. Set up Material UI theme
+
+### UI Components
+- [ ] 25. Implement authentication UI
+- [ ] 26. Create core layout components
+- [ ] 27. Develop monthly data upload forms
+- [ ] 28. Build data tables for viewing uploaded data
+- [ ] 29. Create stockpile visualization components
+
+## Workflow Implementation
+
+### Data Upload Workflow
+- [ ] 30. Create workflow stepper for monthly data upload
+- [ ] 31. Implement CSV import/export functionality
+- [ ] 32. Build data validation and error reporting UI
+
+### Reconciliation and Reporting
+- [ ] 33. Implement basic reconciliation calculations
+- [ ] 34. Create monthly data approval workflow
+- [ ] 35. Develop reporting dashboards for key metrics
+- [ ] 36. Build historical data comparison views
+
+## Integration and Deployment
+
+### Integration
+- [ ] 37. Connect all frontend components with backend
+- [ ] 38. Implement error handling and loading states
+- [ ] 39. Optimize performance for large datasets
+
+### Deployment
+- [ ] 40. Deploy frontend to Firebase Hosting
+- [ ] 41. Create system documentation
+- [ ] 42. Set up monitoring and logging
+
+## Testing and Refinement
+
+### Testing
+- [ ] 43. Perform manual testing of monthly data upload workflow
+- [ ] 44. Test reconciliation calculations with sample data
+- [ ] 45. Verify data integrity across the system
+
+### Data and Security
+- [ ] 46. Create test data for demonstrations
+- [ ] 47. Review authentication and authorization implementation
+- [ ] 48. Optimize database queries for reporting
+
+## Final Touches
+
+### Refinements
+- [ ] 49. Polish UI for better user experience
+- [ ] 50. Enhance error handling and user feedback
+- [ ] 51. Optimize application performance
+
+### Documentation and Handover
+- [ ] 52. Complete user guide with workflow instructions
+- [ ] 53. Document known limitations of simplified schema
+- [ ] 54. Create roadmap for future enhancements
+- [ ] 55. Prepare demonstration with sample mining operation
+- [ ] 56. Final project handover 
