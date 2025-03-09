@@ -34,7 +34,14 @@
         - Cloud Run services
         - Secret Manager access
         - Storage object operations
-- [ ] 4. Initialize Git repository
+- [x] 4. Initialize Git repository
+      * Repository URL: https://github.com/jonnypaceman/upside30
+      * Main branch: main
+      * Initial commit: Add project documentation: README.txt and checklist.txt
+      * Recent commits:
+        - Complete step 3: Set up IAM permissions with service accounts and custom roles
+        - Update checklist: Complete steps 1-2 (GCP project creation and API enablement)
+      * Local workspace: /Users/jonathangregory/Desktop/upside30/upside30
 - [ ] 5. Set up .gitignore file
 
 ### Application Bootstrap
