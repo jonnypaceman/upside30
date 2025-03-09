@@ -197,7 +197,28 @@
         - CREATE TABLE statements with proper constraints
         - CREATE INDEX statements for performance
         - CREATE TRIGGER statements for timestamp management
-- [ ] 11. Create SQL script for reference tables
+- [x] 11. Create SQL script for reference tables
+      * Created script: mine-to-mill/server/src/scripts/02_reference_tables.sql
+      * Tables created:
+        - OreSourceTbl: Ore sources with OreSourceID (PK), OperationID (FK), OreSourceCode, OreSourceDesc, ActiveCheck
+        - OreTypeTbl: Ore types with OreTypeID (PK), OperationID (FK), OreTypeCode, OreTypeDesc, ActiveCheck
+        - MineTypeTbl: Mine types with MineTypeID (PK), OperationID (FK), MineTypeCode, MineTypeDesc, ActiveCheck
+        - MineTbl: Mines with MineID (PK), OperationID (FK), OreSourceID (FK), MineCode, MineDesc, ActiveCheck
+        - MineZoneTbl: Mine zones with MineZoneID (PK), OperationID (FK), MineID (FK), MineZoneCode, MineZoneDesc, ActiveCheck
+        - StockpileTbl: Stockpiles with StockpileID (PK), OperationID (FK), StockpileCode, StockpileDesc, NodeType, ActiveCheck
+      * Added features:
+        - Foreign key constraints to enforce data integrity
+        - Unique constraints on code fields
+        - Indexes for performance optimization
+        - Check constraint on NodeType to limit values to valid types (ROM, Satellite, CTG, COS, SCT)
+        - Timestamps for tracking creation and updates
+        - Triggers to automatically update timestamps
+        - Table and column comments for documentation
+      * Script includes:
+        - DROP TABLE statements to ensure clean installation
+        - CREATE TABLE statements with proper constraints
+        - CREATE INDEX statements for performance
+        - CREATE TRIGGER statements for timestamp management
 - [ ] 12. Create SQL script for period and data tracking tables
 - [ ] 13. Deploy schema to Cloud SQL instance
 - [ ] 14. Create seed data for testing
