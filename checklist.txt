@@ -125,7 +125,32 @@
         - Health check endpoint
         - API versioning (/api/v1/...)
       * Build command: `npm run build` (successful TypeScript compilation)
-- [ ] 8. Install necessary dependencies
+- [x] 8. Install necessary dependencies
+      * Frontend dependencies:
+        - UI Framework: @mui/material, @mui/icons-material, @emotion/react, @emotion/styled
+        - Routing: react-router-dom, @types/react-router-dom
+        - API Communication: axios
+        - Authentication: firebase
+        - Data Visualization: chart.js, react-chartjs-2
+        - Form Handling: formik, yup
+        - Core: react, react-dom, typescript
+      * Backend dependencies:
+        - Server Framework: express, @types/express
+        - Database: pg, pg-hstore, sequelize
+        - Security: helmet, cors, jsonwebtoken, @types/jsonwebtoken
+        - Authentication: firebase-admin
+        - Validation: express-validator
+        - File Handling: multer, @types/multer
+        - Logging: morgan, winston, @types/morgan
+        - Configuration: dotenv
+      * Development tools:
+        - TypeScript: typescript, ts-node, @types/node
+        - Development Server: nodemon
+        - Testing: jest, ts-jest, @types/jest, supertest, @types/supertest
+        - Linting: eslint, @typescript-eslint/parser, @typescript-eslint/eslint-plugin
+        - Build Tools: rimraf
+      * All dependencies installed and configured in respective package.json files
+      * Node.js engine requirement: >=16.0.0
 
 ### Database Setup
 - [ ] 9. Provision PostgreSQL on Cloud SQL
