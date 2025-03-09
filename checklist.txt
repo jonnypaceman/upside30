@@ -20,7 +20,20 @@
       * Cloud Logging API (logging.googleapis.com)
       * Cloud SQL Admin API (sqladmin.googleapis.com)
       * Cloud SQL (sql-component.googleapis.com)
-- [ ] 3. Set up IAM permissions
+- [x] 3. Set up IAM permissions
+      * Created service accounts:
+        - m2m-backend-sa: For backend API operations
+        - m2m-db-sa: For database operations
+        - m2m-storage-sa: For storage operations
+      * Assigned roles:
+        - m2m-backend-sa: roles/run.invoker, roles/secretmanager.secretAccessor, custom role m2m_app_role
+        - m2m-db-sa: roles/cloudsql.client
+        - m2m-storage-sa: roles/storage.objectAdmin
+      * Created custom role (m2m_app_role) with permissions for:
+        - Cloud SQL connections
+        - Cloud Run services
+        - Secret Manager access
+        - Storage object operations
 - [ ] 4. Initialize Git repository
 - [ ] 5. Set up .gitignore file
 

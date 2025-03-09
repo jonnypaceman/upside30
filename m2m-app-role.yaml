@@ -1,0 +1,13 @@
+title: "Mine to Mill Application Role"
+description: "Custom role for the Mine to Mill Reconciliation application"
+stage: "ALPHA"
+includedPermissions:
+- cloudsql.instances.connect
+- cloudsql.instances.get
+- run.services.get
+- secretmanager.secrets.get
+- storage.objects.create
+- storage.objects.delete
+- storage.objects.get
+- storage.objects.list
+- storage.objects.update
