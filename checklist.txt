@@ -179,90 +179,105 @@
         ```
       * Connection string: postgresql://postgres:M2mComplex!Password123@34.87.253.212:5432/mine_to_mill
       * Environment variables updated in .env file
-- [ ] 10. Create dimension tables based on simplified schema (Company, Region, Operation)
-- [ ] 11. Create reference tables (OreSource, OreType, MineType, Mine, MineZone, Stockpile)
-- [ ] 12. Create Period and MonthlyUpload tables for tracking data submissions
-- [ ] 12a. Deploy database schema migrations to Cloud SQL (Ready to deploy using Cloud Shell)
-      * SQL script created: mine-to-mill/server/src/scripts/schema.sql
-      * Deployment script created: mine-to-mill/server/src/scripts/deploy-to-cloud-sql.sh
-      * To complete: Run the deployment script in Google Cloud Shell
+- [x] 10. Create SQL script for organization structure tables
+      * Created script: mine-to-mill/server/src/scripts/01_organization_structure.sql
+      * Tables created:
+        - CompanyTbl: Mining companies with CompanyID (PK), CompanyCode, CompanyDesc, ActiveCheck
+        - RegionTbl: Geographic regions with RegionID (PK), CompanyID (FK), RegionCode, RegionDesc, ActiveCheck
+        - OperationTbl: Mining operations with OperationID (PK), CompanyID (FK), RegionID (FK), OperationCode, OperationDesc, ActiveCheck
+      * Added features:
+        - Foreign key constraints to enforce data integrity
+        - Unique constraints on code fields
+        - Indexes for performance optimization
+        - Timestamps for tracking creation and updates
+        - Triggers to automatically update timestamps
+        - Table and column comments for documentation
+      * Script includes:
+        - DROP TABLE statements to ensure clean installation
+        - CREATE TABLE statements with proper constraints
+        - CREATE INDEX statements for performance
+        - CREATE TRIGGER statements for timestamp management
+- [ ] 11. Create SQL script for reference tables
+- [ ] 12. Create SQL script for period and data tracking tables
+- [ ] 13. Deploy schema to Cloud SQL instance
+- [ ] 14. Create seed data for testing
 
 ## Backend Development
 
 ### Core API Structure
-- [ ] 13. Set up Express server configuration
-- [ ] 14. Configure middleware
-- [ ] 15. Implement Firebase Authentication
-- [ ] 16. Create basic role-based access control
+- [ ] 15. Set up Express server configuration
+- [ ] 16. Configure middleware
+- [ ] 17. Implement Firebase Authentication
+- [ ] 18. Create basic role-based access control
 
 ### Data Management API
-- [ ] 17. Create CRUD endpoints for dimension and reference tables
-- [ ] 18. Implement monthly data upload API with validation
-- [ ] 19. Create endpoints for each data section (Satellite, ROM, CTG, etc.)
-- [ ] 20. Develop data retrieval API for reporting
-- [ ] 21. Deploy backend to Cloud Run
+- [ ] 19. Create CRUD endpoints for dimension and reference tables
+- [ ] 20. Implement monthly data upload API with validation
+- [ ] 21. Create endpoints for each data section (Satellite, ROM, CTG, etc.)
+- [ ] 22. Develop data retrieval API for reporting
+- [ ] 23. Deploy backend to Cloud Run
 
 ## Frontend Development
 
 ### Frontend Setup
-- [ ] 22. Organize folder structure
-- [ ] 23. Configure routing with React Router
-- [ ] 24. Set up Material UI theme
+- [ ] 24. Organize folder structure
+- [ ] 25. Configure routing with React Router
+- [ ] 26. Set up Material UI theme
 
 ### UI Components
-- [ ] 25. Implement authentication UI
-- [ ] 26. Create core layout components
-- [ ] 27. Develop monthly data upload forms
-- [ ] 28. Build data tables for viewing uploaded data
-- [ ] 29. Create stockpile visualization components
+- [ ] 27. Implement authentication UI
+- [ ] 28. Create core layout components
+- [ ] 29. Develop monthly data upload forms
+- [ ] 30. Build data tables for viewing uploaded data
+- [ ] 31. Create stockpile visualization components
 
 ## Workflow Implementation
 
 ### Data Upload Workflow
-- [ ] 30. Create workflow stepper for monthly data upload
-- [ ] 31. Implement CSV import/export functionality
-- [ ] 32. Build data validation and error reporting UI
+- [ ] 32. Create workflow stepper for monthly data upload
+- [ ] 33. Implement CSV import/export functionality
+- [ ] 34. Build data validation and error reporting UI
 
 ### Reconciliation and Reporting
-- [ ] 33. Implement basic reconciliation calculations
-- [ ] 34. Create monthly data approval workflow
-- [ ] 35. Develop reporting dashboards for key metrics
-- [ ] 36. Build historical data comparison views
+- [ ] 35. Implement basic reconciliation calculations
+- [ ] 36. Create monthly data approval workflow
+- [ ] 37. Develop reporting dashboards for key metrics
+- [ ] 38. Build historical data comparison views
 
 ## Integration and Deployment
 
 ### Integration
-- [ ] 37. Connect all frontend components with backend
-- [ ] 38. Implement error handling and loading states
-- [ ] 39. Optimize performance for large datasets
+- [ ] 39. Connect all frontend components with backend
+- [ ] 40. Implement error handling and loading states
+- [ ] 41. Optimize performance for large datasets
 
 ### Deployment
-- [ ] 40. Deploy frontend to Firebase Hosting
-- [ ] 41. Create system documentation
-- [ ] 42. Set up monitoring and logging
+- [ ] 42. Deploy frontend to Firebase Hosting
+- [ ] 43. Create system documentation
+- [ ] 44. Set up monitoring and logging
 
 ## Testing and Refinement
 
 ### Testing
-- [ ] 43. Perform manual testing of monthly data upload workflow
-- [ ] 44. Test reconciliation calculations with sample data
-- [ ] 45. Verify data integrity across the system
+- [ ] 45. Perform manual testing of monthly data upload workflow
+- [ ] 46. Test reconciliation calculations with sample data
+- [ ] 47. Verify data integrity across the system
 
 ### Data and Security
-- [ ] 46. Create test data for demonstrations
-- [ ] 47. Review authentication and authorization implementation
-- [ ] 48. Optimize database queries for reporting
+- [ ] 48. Create test data for demonstrations
+- [ ] 49. Review authentication and authorization implementation
+- [ ] 50. Optimize database queries for reporting
 
 ## Final Touches
 
 ### Refinements
-- [ ] 49. Polish UI for better user experience
-- [ ] 50. Enhance error handling and user feedback
-- [ ] 51. Optimize application performance
+- [ ] 51. Polish UI for better user experience
+- [ ] 52. Enhance error handling and user feedback
+- [ ] 53. Optimize application performance
 
 ### Documentation and Handover
-- [ ] 52. Complete user guide with workflow instructions
-- [ ] 53. Document known limitations of simplified schema
-- [ ] 54. Create roadmap for future enhancements
-- [ ] 55. Prepare demonstration with sample mining operation
-- [ ] 56. Final project handover 
+- [ ] 54. Complete user guide with workflow instructions
+- [ ] 55. Document known limitations of simplified schema
+- [ ] 56. Create roadmap for future enhancements
+- [ ] 57. Prepare demonstration with sample mining operation
+- [ ] 58. Final project handover 
