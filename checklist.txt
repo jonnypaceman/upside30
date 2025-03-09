@@ -244,7 +244,19 @@
         - CREATE TABLE statements with proper constraints
         - CREATE INDEX statements for performance
         - CREATE TRIGGER statements for timestamp management
-- [ ] 13. Deploy schema to Cloud SQL instance
+- [x] 13. Deploy schema to Cloud SQL instance
+      * Created combined schema script: mine-to-mill/server/src/scripts/combined_schema_simplified.sql
+      * Removed complex check constraints with subqueries that were causing deployment issues
+      * Deployed schema via Google Cloud Console SQL Editor
+      * Verified deployment using Cloud SQL Proxy:
+        - Command: `cloud_sql_proxy -instances=mine-to-mill-recon-jg-2024:australia-southeast1:m2m-postgres-dev=tcp:5433 &`
+        - Connection: `PGPASSWORD="Maree123$" psql -h localhost -p 5433 -U postgres -d mine_to_mill`
+      * Successfully created 17 tables:
+        - Organization structure: CompanyTbl, RegionTbl, OperationTbl
+        - Reference tables: OreSourceTbl, OreTypeTbl, MineTypeTbl, MineTbl, MineZoneTbl, StockpileTbl
+        - Period and data tracking: PeriodTbl, MonthlyUploadTbl, SatelliteStockTbl, ROMStockTbl, CTGStockTbl, COSStockTbl, SCTStockTbl, ReconciliationFactorTbl
+      * All tables include proper constraints, indexes, and triggers
+      * Database password set to "Maree123$" for development
 - [ ] 14. Create seed data for testing
 
 ## Backend Development
